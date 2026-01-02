@@ -1,0 +1,4 @@
+DROP TABLE postalcodes;
+DROP TABLE cities;
+DROP TABLE states;
+DROP TABLE countries;
