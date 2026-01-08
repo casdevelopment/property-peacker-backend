@@ -23,8 +23,11 @@ export class User {
   @Column()
   phone: string;
 
-  @Column()
+  @Column({ default: 1 })
   roleId: number;
+
+  @Column({ default: false })
+  isVerified: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
