@@ -16,10 +16,10 @@ import { LocalStrategy } from './strategies/local.strategy';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         secret:
-          configService.get<string>('JWT_SECRET') ||
+          configService.get<string>(process.env.JWT_SECRET) ||
           'your-secret-key-change-in-production',
         signOptions: {
-          expiresIn: configService.get<string>('JWT_EXPIRES_IN') || '1d',
+          expiresIn: configService.get<string>(process.env.JWT_EXPIRES_IN) || '1d',
         },
       }),
       inject: [ConfigService],
@@ -29,4 +29,4 @@ import { LocalStrategy } from './strategies/local.strategy';
   providers: [AuthService, JwtStrategy, LocalStrategy],
   exports: [AuthService],
 })
-export class AuthModule {}
+export class AuthModule { }
